@@ -22,12 +22,13 @@ function Main({ cards }) {
 
 
     const [title, settitle] = useState("")
+
     function newTitle(event) {
         event.preventDefault()
         alert("Form Inviato")
         console.log(title);
-
     }
+
 
     return (
 
