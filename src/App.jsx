@@ -14,7 +14,7 @@ function App() {
     <>
       <div className="mainContent">
         <Header />
-        <Main cards={posts} />
+        <Main cardss={posts} />
         <Footer />
       </div>
     </>

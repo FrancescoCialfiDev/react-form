@@ -1,11 +1,12 @@
 import { useState } from "react"
 
 
-function Main({ cards }) {
+function Main({ cardss }) {
+    const [cards, setCards] = useState(cardss);
 
-    const newPosts = [...cards].map((element) => {
+    const newPosts = cards.map((element) => {
         return (
-            //  element.published && (
+            //element.published && (
             <div className="col-xl-3 col-md-4 col-sm-6" key={element.id}>
                 <div className="card">
                     <img src={element.image} className="card-img-top" alt="" />
@@ -21,13 +22,28 @@ function Main({ cards }) {
     })
 
 
-    const [title, settitle] = useState("")
+    const [title, setTitle] = useState("")
 
     function newTitle(event) {
         event.preventDefault()
         alert("Form Inviato")
-        console.log(title);
+        console.log(title)
+
+        const newPost = {
+            id: 77,
+            title: title,
+            image: "https://uploads.keitaro.com/uploads/2024/06/the-power-of-css-grid-layout-2.png",
+            content:
+                "CSS Grid is a layout system optimized for building complex and responsive web designs with grid-based structures.",
+            tags: ["css", "layout"],
+            published: true,
+        }
+
+        const newArray = [...cards, newPost]
+        // aggiungiamo un array ai Posts
+        setCards(newArray)
     }
+
 
 
     return (
@@ -38,7 +54,7 @@ function Main({ cards }) {
                     <div className="form-group">
                         <label htmlFor="titleForm">Add a title for the card</label>
                         <input type="text" value={title} className="form-control" id="titleForm" placeholder="Es: React Components" onChange={(e) => {
-                            settitle(e.target.value)
+                            setTitle(e.target.value)
                         }} />
                     </div>
                     <button type="submit" className="btn btn-primary mt-2">Submit</button>
