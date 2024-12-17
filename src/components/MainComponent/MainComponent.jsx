@@ -1,4 +1,4 @@
-
+import { useState } from "react"
 
 
 function Main({ cards }) {
@@ -21,16 +21,24 @@ function Main({ cards }) {
     })
 
 
+    const [title, settitle] = useState("")
+    function newTitle(event) {
+        event.preventDefault()
+        alert("Form Inviato")
+        console.log(title);
 
+    }
 
     return (
 
-        <main className="d-flex">
+        < main className="d-flex" >
             <div className="formContainer">
-                <form className="p-5 bg-white rounded-3 m-4">
+                <form className="p-5 bg-white rounded-3 m-4" onSubmit={newTitle}>
                     <div className="form-group">
                         <label htmlFor="titleForm">Add a title for the card</label>
-                        <input type="text" className="form-control" id="titleForm" placeholder="Es: React Components" />
+                        <input type="text" value={title} className="form-control" id="titleForm" placeholder="Es: React Components" onChange={(e) => {
+                            settitle(e.target.value)
+                        }} />
                     </div>
                     <button type="submit" className="btn btn-primary mt-2">Submit</button>
                 </form>
@@ -41,7 +49,7 @@ function Main({ cards }) {
                     {newPosts}
                 </div>
             </div>
-        </main>
+        </main >
 
     )
 }
